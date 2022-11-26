@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { getVideo } = require('./helpers/video');
+const { init } = require('./helpers/video');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
@@ -14,7 +14,7 @@ app.get('/video', (req, res) => {
 
     const range = req.headers.range;
 
-    const getVideoData = getVideo(range);
+    const getVideoData = init(range);
 
     res.writeHead(206, getVideoData['headers']);
 
